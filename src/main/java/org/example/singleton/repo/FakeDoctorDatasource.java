@@ -12,18 +12,21 @@ public class FakeDoctorDatasource implements CRUDRepo<Doctor> {
 	private List<Doctor> doctorDatabase = new ArrayList<>();
 	private static long id = 0L;
 
-	private static FakeDoctorDatasource instance = null;
+	private static volatile FakeDoctorDatasource instance = null;
 
 	private FakeDoctorDatasource() {
 		initFakeData();
 	}
 
 	public static FakeDoctorDatasource getInstance() {
-		if (instance == null) {
-			instance = new FakeDoctorDatasource();
+		if (instance != null) {
+			return instance;
 		}
 
-		return instance;
+		synchronized (FakeDoctorDatasource.class) {
+			instance = new FakeDoctorDatasource();
+			return instance;
+		}
 	}
 
 	private void initFakeData() {
