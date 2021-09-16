@@ -22,10 +22,12 @@ public class Main {
 
 		DoctorReferral nDoctorReferral = (DoctorReferral) doctorReferralTemplate.clone();
 		nDoctorReferral.setCause("Some problem to investigate");
+		nDoctorReferral.setPatientName("Patient 1");
 		nDoctorReferral.setToMedicalCenter("Somewhere");
 
 		SpecialisedReferral nSpecialisedReferral = (SpecialisedReferral) specialisedReferralTemplate.clone();
 		nSpecialisedReferral.setCause("Some very important problem to investigate");
+		nSpecialisedReferral.setPatientName("Patient 1");
 		nSpecialisedReferral.setToMedicalCenter("Somewhere");
 
 		System.out.println(nDoctorReferral);

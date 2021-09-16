@@ -1,10 +1,6 @@
 package org.example.factory;
 
-import org.example.factory.DoctorFactory;
-import org.example.factory.EmploymentFactory;
-import org.example.factory.NurseFactory;
-import org.example.factory.model.Doctor;
-import org.example.factory.model.Nurse;
+import org.example.factory.model.Employee;
 
 public class Main {
 
@@ -12,11 +8,15 @@ public class Main {
 		EmploymentFactory dFactory = new DoctorFactory();
 		EmploymentFactory nFactory = new NurseFactory();
 
-		Doctor doctor = (Doctor) dFactory.createWorker("Doctor 1", "12-01-1989", "University");
-		Nurse nurse = (Nurse) nFactory.createWorker("Nurse 1", "01-02-1999", "University");
+		Employee doctor = employ(dFactory, "Doctor 1", "12-01-1989", "University");
+		Employee nurse = employ(nFactory, "Nurse 1", "01-02-1999", "University");
 
 		System.out.println(doctor);
 		System.out.println(nurse);
 
+	}
+
+	static Employee employ(EmploymentFactory employmentFactory, String name, String dob, String education) {
+		return employmentFactory.createWorker(name, dob, education);
 	}
 }
