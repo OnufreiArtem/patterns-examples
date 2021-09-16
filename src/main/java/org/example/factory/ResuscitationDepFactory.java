@@ -23,8 +23,8 @@ public class ResuscitationDepFactory extends ReservationFactory {
 	);
 
 	@Override
-	public void createReservation(Patient patient) {
-		FakeReservationRepo.getInstance().addReservation(new Reservation("Resuscitation Department", peekDoctor(), patient));
+	public Reservation createReservation(Patient patient) {
+		return new Reservation("Resuscitation Department", peekDoctor(), patient);
 	}
 
 	@Override

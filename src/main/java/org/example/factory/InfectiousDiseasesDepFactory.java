@@ -23,8 +23,8 @@ public class InfectiousDiseasesDepFactory extends ReservationFactory{
 	);
 
 	@Override
-	public void createReservation(Patient patient) {
-		FakeReservationRepo.getInstance().addReservation(new Reservation("Infectious Diseases Department", peekDoctor(), patient));
+	public Reservation createReservation(Patient patient) {
+		return new Reservation("Infectious Diseases Department", peekDoctor(), patient);
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package org.example.factory;
 
 import org.example.factory.model.Patient;
-import org.example.factory.repository.FakeReservationRepo;
+import org.example.factory.model.Reservation;
+
+import java.util.Arrays;
 
 public class Main {
 	public static void main(String[] args) {
@@ -15,12 +17,16 @@ public class Main {
 		Patient patient4 = new Patient("Patient 4", "16-04-1999");
 		Patient patient5 = new Patient("Patient 5", "17-05-1998");
 
-		idFactory.createReservation(patient1);
-		mFactory.createReservation(patient2);
-		rFactory.createReservation(patient3);
-		idFactory.createReservation(patient4);
-		mFactory.createReservation(patient5);
+		Reservation reservation1 = idFactory.createReservation(patient1);
+		Reservation reservation2 = mFactory.createReservation(patient2);
+		Reservation reservation3 = rFactory.createReservation(patient3);
+		Reservation reservation4 = idFactory.createReservation(patient4);
+		Reservation reservation5 = mFactory.createReservation(patient5);
 
-		FakeReservationRepo.getInstance().getReservationList().forEach(System.out::println);
+		printAll(reservation1, reservation2, reservation3, reservation4, reservation5);
+	}
+
+	static void printAll(Reservation ...reservations) {
+		Arrays.stream(reservations).forEach(System.out::println);
 	}
 }
