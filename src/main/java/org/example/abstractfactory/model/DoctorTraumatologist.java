@@ -7,6 +7,6 @@ public class DoctorTraumatologist extends Doctor {
 
 	@Override
 	public String toString() {
-		return "I am therapist: " + super.toString();
+		return "I am traumatologist: " + super.toString();
 	}
 }
