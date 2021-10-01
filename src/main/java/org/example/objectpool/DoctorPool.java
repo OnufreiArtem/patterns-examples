@@ -25,7 +25,7 @@ public class DoctorPool {
 	}
 
 	public void returnDoctor(Doctor doctor) {
-		inUse.pop();
+		inUse.remove(doctor);
 		free.push(doctor);
 		System.out.println(doctor.getName() + " is free now");
 	}
