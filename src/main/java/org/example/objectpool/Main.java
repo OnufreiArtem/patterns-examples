@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 public class Main {
 
 	public static void main(String[] args) {
+		System.out.println("-----With-object-pool------");
 		LocalDateTime start = LocalDateTime.now();
 		DoctorPool doctorPool = new DoctorPool();
 
@@ -29,6 +30,7 @@ public class Main {
 
 		System.out.println("Program finished in " + ChronoUnit.MILLIS.between(start, finish));
 
+		System.out.println("----Without-object-pool----");
 		LocalDateTime start2 = LocalDateTime.now();
 		DoctorRepository doctorRepository = new DoctorRepository();
 
