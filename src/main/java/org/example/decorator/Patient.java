@@ -1,4 +1,4 @@
-package org.example.proxy;
+package org.example.decorator;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

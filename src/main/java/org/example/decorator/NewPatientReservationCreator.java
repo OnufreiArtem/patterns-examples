@@ -1,11 +1,9 @@
-package org.example.proxy;
+package org.example.decorator;
 
-public class NewPatientReservationCreator implements ReservationCreator {
-
-	private final ReservationCreator reservationCreator;
+public class NewPatientReservationCreator extends ReservationCreatorDecorator {
 
 	public NewPatientReservationCreator(ReservationCreator reservationCreator) {
-		this.reservationCreator = reservationCreator;
+		super(reservationCreator);
 	}
 
 	@Override

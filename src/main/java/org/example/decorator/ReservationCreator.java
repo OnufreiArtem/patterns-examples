@@ -1,4 +1,4 @@
-package org.example.proxy;
+package org.example.decorator;
 
 public interface ReservationCreator {
 

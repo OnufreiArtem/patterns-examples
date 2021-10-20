@@ -1,6 +1,6 @@
-package org.example.proxy;
+package org.example.decorator;
 
-public class PatientReservationCreator implements ReservationCreator {
+public class SimpleReservationCreator implements ReservationCreator {
 
 	@Override
 	public void createReservation(Reservation reservation) {

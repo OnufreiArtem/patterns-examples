@@ -1,4 +1,4 @@
-package org.example.proxy;
+package org.example.decorator;
 
 import java.util.ArrayList;
 import java.util.List;
