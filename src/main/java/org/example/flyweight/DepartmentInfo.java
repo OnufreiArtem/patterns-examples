@@ -12,7 +12,7 @@ public enum DepartmentInfo {
 		put("foundation", LocalDate.now().minusYears(20).toString());
 	}}),
 	TRAUMATOLOGY_DEPARTMENT(new HashMap<String, String>() {{
-		put("name", "Infectious diseases department");
+		put("name", "Traumatology department");
 		put("address", "Some Street 1");
 		put("chief physician", "Doctor 1");
 		put("foundation", LocalDate.now().minusYears(20).toString());
