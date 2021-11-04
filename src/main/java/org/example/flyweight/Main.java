@@ -14,10 +14,10 @@ public class Main {
 		}};
 
 		System.out.println("Doctor 1 and Doctor 3 has same department info : "
-				+ (doctorList.get(0).getDepartmentInfo().hashCode() == doctorList.get(2).getDepartmentInfo().hashCode()));
+				+ (doctorList.get(0).getDepartmentInfo() == doctorList.get(2).getDepartmentInfo()));
 		System.out.println("Doctor 1 and Doctor 2 has not same department info : "
-				+ (doctorList.get(0).getDepartmentInfo().hashCode() != doctorList.get(1).getDepartmentInfo().hashCode()));
+				+ (doctorList.get(0).getDepartmentInfo() != doctorList.get(1).getDepartmentInfo()));
 		System.out.println("Doctor 2 and Doctor 4 has same department info : "
-				+ (doctorList.get(1).getDepartmentInfo().hashCode() == doctorList.get(3).getDepartmentInfo().hashCode()));
+				+ (doctorList.get(1).getDepartmentInfo() == doctorList.get(3).getDepartmentInfo()));
 	}
 }

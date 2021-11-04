@@ -14,5 +14,5 @@ public class Doctor {
 	private String name;
 	private String speciality;
 	private LocalDate dob;
-	private Map departmentInfo;
+	private Map<String, String> departmentInfo;
 }
