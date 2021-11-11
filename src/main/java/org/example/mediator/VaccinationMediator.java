@@ -1,6 +1,5 @@
 package org.example.mediator;
 
-import java.time.Duration;
 import java.time.LocalDate;
 
 public class VaccinationMediator {
