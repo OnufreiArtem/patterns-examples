@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,10 +12,15 @@ public class Doctor {
 	private String name;
 	private VaccinationMediator vaccinationMediator;
 
-	public void vaccinateAndGetCertificate(Patient patient) {
-		System.out.println("Vaccinating " + patient.getName() + " ...");
-		patient.setLastlyVaccinated(LocalDate.now());
+	public void vaccinate(Patient patient) throws InterruptedException {
+		vaccinationMediator.isBusy(this);
+		System.out.println(name + " vaccinate " + patient.getName() + "...");
+		Thread.sleep(1000);
 		System.out.println(name + " successfully vaccinated " + patient.getName());
-		vaccinationMediator.giveCertificate("Patient " + patient.getName() + " was vaccinated on " + LocalDate.now() + " by " + name);
+		vaccinationMediator.free(this);
+	}
+
+	public void addToVaccinationDoctors() {
+		vaccinationMediator.addDoctor(this);
 	}
 }

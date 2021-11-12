@@ -2,16 +2,18 @@ package org.example.mediator;
 
 public class Main {
 	public static void main(String[] args) {
-		Patient patient = new Patient();
-		patient.setName("James Tiberius Kirk");
-		Doctor doctor = new Doctor();
-		doctor.setName("Dr. Leonard H. \"Bones\" McCoy");
+		VaccinationMediator vaccinationMediator = new VaccinationMediator();
 
-		VaccinationMediator vaccinationMediator = new VaccinationMediator(patient, doctor);
+		new Patient("Natasha", vaccinationMediator).addToVaccinationQueue();
+		new Patient("Bruce", vaccinationMediator).addToVaccinationQueue();
+		new Patient("Steve", vaccinationMediator).addToVaccinationQueue();
+		new Patient("Loki", vaccinationMediator).addToVaccinationQueue();
+		new Patient("Thor", vaccinationMediator).addToVaccinationQueue();
 
-		patient.setVaccinationMediator(vaccinationMediator);
-		doctor.setVaccinationMediator(vaccinationMediator);
+		new Doctor("Doctor Strange", vaccinationMediator).addToVaccinationDoctors();
+		new Doctor("Peter", vaccinationMediator).addToVaccinationDoctors();
 
-		patient.getVaccinated();
+		vaccinationMediator.initiate();
+
 	}
 }

@@ -1,31 +1,53 @@
 package org.example.mediator;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class VaccinationMediator {
 
-	private final Patient patient;
-	private final Doctor doctor;
+	private final Queue<Patient> vaccinationList = new PriorityQueue<>();
+	private final List<Doctor> doctorList = new ArrayList<>();
 
-	public VaccinationMediator(Patient patient, Doctor doctor) {
-		this.patient = patient;
-		this.doctor = doctor;
+	public VaccinationMediator() {
 	}
 
-	public void vaccinate() {
-		System.out.println("Attempted to vaccinate patient: " + patient.getName());
-		LocalDate lastlyVaccinated = patient.getLastlyVaccinated();
-		if (lastlyVaccinated == null || isDateOlderThanSixMonth(lastlyVaccinated)) {
-			doctor.vaccinateAndGetCertificate(patient);
+	public void initiate() {
+		for (int i = 0; i < vaccinationList.size(); i++) {
+			vaccinateFirstPatient();
 		}
 	}
 
-	public boolean isDateOlderThanSixMonth(LocalDate localdate) {
-		return LocalDate.now().minusMonths(6L).isAfter(localdate);
+	public void addToQueue(Patient patient) {
+		vaccinationList.add(patient);
 	}
 
-	public void giveCertificate(String certificate) {
-		patient.giveCertificate(certificate);
+	public void addDoctor(Doctor doctor) {
+		doctorList.add(doctor);
 	}
 
+	public void isBusy(Doctor doctor) {
+		doctorList.remove(doctor);
+	}
+
+	public void free(Doctor doctor) {
+		doctorList.add(doctor);
+		vaccinateFirstPatient();
+	}
+
+	public void vaccinateFirstPatient() {
+		if (doctorList.size() <= 0) {
+			return;
+		}
+		try {
+			Patient firstPatient = vaccinationList.poll();
+			if(firstPatient == null) {
+				return;
+			}
+			doctorList.get(0).vaccinate(firstPatient);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
